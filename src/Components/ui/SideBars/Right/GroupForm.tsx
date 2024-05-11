@@ -67,6 +67,7 @@ export function GroupForm({ className }: React.ComponentProps<"form">) {
             low_name: groupName.toString().toLowerCase(),
             createdBy: userName,
             admin: userUid,
+            createdAt: serverTimestamp(),
           });
           // Add the user as a member of this group with their UID as the document ID
           const memberDocRef = doc(
@@ -102,6 +103,7 @@ export function GroupForm({ className }: React.ComponentProps<"form">) {
             title: "Group Created Successfully!",
           });
           setIsLoading(false);
+          window.location.reload();
         })
         .catch((error) => {
           setIsLoading(false);

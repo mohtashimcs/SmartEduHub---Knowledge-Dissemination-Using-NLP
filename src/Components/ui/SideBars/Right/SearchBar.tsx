@@ -13,6 +13,7 @@ import {
   doc,
   setDoc,
   serverTimestamp,
+  Timestamp,
 } from "firebase/firestore";
 
 import { Search } from "lucide-react";
@@ -24,6 +25,7 @@ const SearchBar = () => {
     name: string;
     icon: string;
     createdBy: string;
+    createdAt: Timestamp;
   }
   const [groupName, setGroupName] = useState("");
   const [groups, setGroups] = useState<Groups[]>([]);
@@ -124,7 +126,6 @@ const SearchBar = () => {
       console.error("Error joining group:", error);
     }
   };
-
   return (
     <>
       <div className="relative flex flex-col w-full">
@@ -163,7 +164,7 @@ const SearchBar = () => {
               {groups.map((group) => (
                 <div
                   key={group.id}
-                  className="p-4 hover:bg-gray-50 cursor-pointer"
+                  className="p-4 hover:bg-gray-50 cursor-pointer  "
                 >
                   <div className="flex space-x-2 items-center">
                     <div>
@@ -180,6 +181,20 @@ const SearchBar = () => {
                         </h3>
                         <span className="text-xs poppins-light text-slate-500">
                           Created By {group.createdBy}
+                        </span>
+                        <span className="text-xs poppins-extralight">
+                          Created on{" "}
+                          {new Date(group.createdAt.toDate()).toLocaleString(
+                            "en-US",
+                            {
+                              year: "numeric",
+                              month: "2-digit",
+                              day: "numeric",
+                              hour: "numeric",
+                              minute: "2-digit",
+                              hour12: true,
+                            }
+                          )}
                         </span>
                       </article>
                       <Button

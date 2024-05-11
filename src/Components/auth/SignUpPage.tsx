@@ -21,6 +21,7 @@ import {
   updatePic,
   updateUserId,
 } from "@/src/app/features/ProfileSlice";
+import DomainSelection from "./DomainSelection";
 
 function SignUpPage() {
   const [userName, setUserName] = useState("");
@@ -31,10 +32,15 @@ function SignUpPage() {
   const [loading, setIsLoading] = useState(false);
   const [profilePic, setProfilePic] = useState<File | null>(null);
   const [category, setCategory] = useState("cs");
+  const [university, setUniversity] = useState("comsats");
   const Navigate = useNavigate();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [validationMessage, setValidationMessage] = useState("");
+  const [selectedDomains, setSelectedDomains] = useState<string[]>([]);
   const dispatch = useAppDispatch();
+  const handleDomainChange = (domains: string[]) => {
+    setSelectedDomains(domains);
+  };
 
   useEffect(() => {
     // This function will be called after password or checkPass changes
@@ -182,6 +188,8 @@ function SignUpPage() {
       category: category,
       low_name: lowercasedName,
       ProfilePic: profilePicUrl,
+      University: university,
+      Domains: selectedDomains,
       posts: [],
       groups: [],
       files: [],
@@ -197,7 +205,6 @@ function SignUpPage() {
     alert("Registration Successful.");
     Navigate("/");
   };
-
   return (
     <>
       <section className="bg-transparent min-h-screen flex flex-col items-center justify-center poppins-regular bg-[#dfe3ee]">
@@ -401,7 +408,7 @@ function SignUpPage() {
                   </div>
                 </div>
                 <div>
-                  <span className="text-sm font-sans font-light">
+                  <span className="text-sm poppins-semibold">
                     Choose your department:
                   </span>
                   <RadioGroup
@@ -433,6 +440,36 @@ function SignUpPage() {
                     </div>
                   </RadioGroup>
                 </div>
+                <div>
+                  <span className="text-sm poppins-semibold">
+                    Choose your university:
+                  </span>
+                  <RadioGroup
+                    defaultValue="comsats"
+                    className="flex space-x-0"
+                    onChange={(e) =>
+                      setUniversity((e.target as HTMLInputElement).value)
+                    }
+                  >
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="comsats" id="comsats" />
+                      <Label htmlFor="comsats">COMSATS</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="fast" id="fast" />
+                      <Label htmlFor="fast">FAST</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="nust" id="nust" />
+                      <Label htmlFor="nust">NUST</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="uet" id="uet" />
+                      <Label htmlFor="uet">UET</Label>
+                    </div>
+                  </RadioGroup>
+                </div>
+                <DomainSelection onDomainChange={handleDomainChange} />
                 <button
                   type="submit"
                   className="bg-[#002D74] rounded-xl poppins-semibold text-white py-2 hover:scale-105 duration-300"

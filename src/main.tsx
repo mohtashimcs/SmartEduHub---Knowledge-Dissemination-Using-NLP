@@ -18,6 +18,7 @@ import { FileMain } from "./Components/ui/Files/FileMain.tsx";
 import MainPage from "./Components/ui/home.tsx";
 import Posts from "./Components/ui/Posts/posts.tsx";
 import SignUpPage from "./Components/auth/SignUpPage.tsx";
+import { Members } from "./Components/Members/Members.tsx";
 // const LazyLoadSignUp = React.lazy(() => import("./Components/auth/SignUpPage"));
 // const LazyLoadPosts = React.lazy(
 //   () => import("./Components/ui/Posts/posts.tsx")
@@ -36,6 +37,7 @@ const router = createBrowserRouter(
         <Route path="/" element={<MainPage />}>
           <Route index element={<Posts />} />
           <Route path="/Chats" element={<Chats />}></Route>
+          <Route path="/Members" element={<Members />}></Route>
           <Route path="/Files" element={<FileMain />}></Route>
           <Route path="/Profile/:queryUserId" element={<ProfileHome />}></Route>
         </Route>

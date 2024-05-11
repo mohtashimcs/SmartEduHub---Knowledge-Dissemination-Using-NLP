@@ -1,4 +1,4 @@
-import { Bot, Files, Home, LogOut } from "lucide-react";
+import { BookUser, Bot, Files, Home, LogOut } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Link, useLocation } from "react-router-dom";
 import useLogout from "@/src/Components/auth/Operations";
@@ -37,6 +37,21 @@ export const Links = () => {
         <div className="flex items-center p-3 space-x-4 hover:bg-slate-200">
           <Bot />
           <span>ChatBot</span>
+        </div>
+      </Link>
+      <Separator className="bg-[#87CEEB]" />
+      <Link
+        to="/Members"
+        className={`w-full ${
+          selectedLink === "/Members"
+            ? "bg-slate-300 border-slate-400 border-b-2"
+            : ""
+        }`}
+        onClick={() => setSelectedLink("/Members")}
+      >
+        <div className="flex w-full items-center p-3 space-x-4 hover:bg-slate-200">
+          <BookUser />
+          <span>Members</span>
         </div>
       </Link>
       <Separator className="bg-[#87CEEB]" />
