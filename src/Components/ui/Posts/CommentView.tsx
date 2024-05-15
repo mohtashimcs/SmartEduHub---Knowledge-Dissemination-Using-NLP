@@ -120,7 +120,7 @@ export const CommentView = ({ PostId }: Props) => {
           toast({
             className: "poppins-bold",
             variant: "destructive",
-            title: "Negative!",
+            title: "OOPs!",
             description: "Negative comments are not allowed.",
           });
         } else {

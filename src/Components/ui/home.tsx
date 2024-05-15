@@ -1,12 +1,7 @@
 import LeftPane from "./SideBars/Left/leftpane.tsx";
 import NavBar from "./Header/navbar.tsx";
 import RightPane from "./SideBars/Right/rightpane.tsx";
-// import Posts from "./posts.tsx";
 import { Outlet } from "react-router-dom";
-// import Chats from "./chats.tsx";
-// const MemoizedLeftPane = React.memo(LeftPane);
-// const MemoizedNavBar = React.memo(NavBar);
-// const MemoizedRightPane = React.memo(RightPane);
 export default function MainPage() {
   return (
     <>

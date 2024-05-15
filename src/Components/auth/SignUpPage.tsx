@@ -80,6 +80,49 @@ function SignUpPage() {
       setValidationMessage("");
     }
   };
+  const validateUserName = () => {
+    if (!userName) {
+      setValidationMessage("Username is required.");
+      return false;
+    }
+    const usernameRegex = /^(?![0-9]*$)[a-zA-Z0-9]+$/;
+    if (!usernameRegex.test(userName)) {
+      setValidationMessage(
+        "Username must be alphanumeric and not numeric-only."
+      );
+      toast({
+        className: "poppins-bold",
+        variant: "destructive",
+        title: "Username must be alphanumeric and not numeric-only.",
+      });
+      return false;
+    }
+    setValidationMessage("");
+    return true;
+  };
+
+  const validateName = () => {
+    if (!name) {
+      setValidationMessage("Name is required.");
+      return false;
+    }
+    const nameRegex = /^[a-zA-Z\s]+$/;
+    if (!nameRegex.test(name)) {
+      setValidationMessage("Name should contain only letters and spaces.");
+      toast({
+        className: "poppins-bold",
+        variant: "destructive",
+        title: "Name should contain only letters and spaces.",
+      });
+      return false;
+    }
+    setValidationMessage("");
+    return true;
+  };
+  useEffect(() => {
+    validateUserName();
+    validateName();
+  }, [userName, name]);
   useEffect(() => {
     if (checkPass.length != 0) checkValidity();
   }, [checkPass]);

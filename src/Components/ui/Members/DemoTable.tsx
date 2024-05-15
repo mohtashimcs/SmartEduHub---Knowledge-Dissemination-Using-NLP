@@ -189,13 +189,11 @@ export function DataTableDemo() {
           </div>
           <Input
             placeholder="Search Users..."
-            value={
-              (table.getColumn("userName")?.getFilterValue() as string) ?? ""
-            }
+            value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
             onChange={(event) =>
-              table.getColumn("userName")?.setFilterValue(event.target.value)
+              table.getColumn("name")?.setFilterValue(event.target.value)
             }
-            className="max-w-sm pl-8 poppins-light border-2 border-blue-400  focus:bg-slate-100 focus-visible:ring-0 focus-visible:ring-offset-0 outline-none focus-visible:border-sky-800"
+            className="max-w-sm pl-8 poppins-light border-2 border-blue-400 text-black focus:bg-slate-100 focus-visible:ring-0 focus-visible:ring-offset-0 outline-none focus-visible:border-sky-800"
           />
         </div>
         <DropdownMenu>
