@@ -59,7 +59,7 @@ export const PromptBar = ({ HandleData, Prompt }: Props) => {
     }
 
     const genAI = new GoogleGenerativeAI(
-      `${import.meta.env.VITE_CHATBOT_API_KEY}`
+      `AIzaSyChN0_mxAWZz19K4jVyALJaOvS_CYbxWeY`
     );
     try {
       setPromptExecut(true);
@@ -90,7 +90,7 @@ export const PromptBar = ({ HandleData, Prompt }: Props) => {
   const fetchBotResponse = async (userMessage: string) => {
     setPromptExecut(true);
     const genAI = new GoogleGenerativeAI(
-      `${import.meta.env.VITE_CHATBOT_API_KEY}`
+      `AIzaSyChN0_mxAWZz19K4jVyALJaOvS_CYbxWeY`
     );
     const generationConfig = {
       stopSequences: ["red"],

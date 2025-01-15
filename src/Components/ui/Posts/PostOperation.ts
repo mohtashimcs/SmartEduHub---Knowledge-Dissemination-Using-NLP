@@ -20,9 +20,9 @@ export const textAreaAdjust = (element: HTMLTextAreaElement) => {
 };
 
 export const userSentiment = async (data: any) => {
-  const response = await fetch(`${import.meta.env.VITE_SENTIMENT_API_URL}`, {
+  const response = await fetch(`https://api-inference.huggingface.co/models/cardiffnlp/twitter-roberta-base-sentiment-latest`, {
     headers: {
-      Authorization: `Bearer ${import.meta.env.VITE_SENTIMENT_API_KEY}`,
+      Authorization: `Bearer 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`,
     },
     method: "POST",
     body: JSON.stringify(data),
